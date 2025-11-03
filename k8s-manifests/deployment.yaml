@@ -14,6 +14,12 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: steven0707/flaskapp:latest
+        image: mithuns24/flaskapp:latest
         ports:
         - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /welcome
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10

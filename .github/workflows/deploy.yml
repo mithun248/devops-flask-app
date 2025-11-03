@@ -20,8 +20,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t steven0707/flaskapp:${{ github.sha }} .
-          docker push steven0707/flaskapp:${{ github.sha }}
+          docker build -t mithuns24/flaskapp:${{ github.sha }} .
+          docker push mithuns24/flaskapp:${{ github.sha }}
 
       - name: Start Minikube
         run: |
@@ -32,7 +32,7 @@ jobs:
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s-manifests/
-          kubectl set image deployment/flask-deployment flask-app=steven0707/flaskapp:${{ github.sha }}
+          kubectl set image deployment/flask-deployment flask-app=mithuns24/flaskapp:${{ github.sha }}
           kubectl rollout status deployment/flask-deployment
 
       - name: Verify Deployment
